@@ -1,5 +1,3 @@
-package parte3data;
-
 public class Data {
     //atributos
     private int dia;
@@ -8,14 +6,9 @@ public class Data {
 
     //construtor
     public Data(int dia, int mes, int ano) {
-        this.dia = dia;
-        this.mes = mes;
-        this.ano = ano;
-        if(!dataValida()){
-            this.dia = 1;
-            this.mes = 1;
-            this.ano = 1;
-        }
+        setAno(ano);
+        setMes(mes);
+        setDia(dia);
     }
     
     //getters
@@ -34,20 +27,29 @@ public class Data {
     //setters
     public void setDia(int dia) {
         this.dia = dia;
+        if(!diaValido())
+            this.dia = 1;
     }
 
     public void setMes(int mes) {
         this.mes = mes;
+        if(!mesValido())
+            this.mes = 1;
     }
 
     public void setAno(int ano) {
         this.ano = ano;
+        if(!anoValido())
+            this.ano = 1;
     }
     
     //override metodos
     @Override
     public String toString(){
-        return this.dia + "/" + this.mes + "/" + this.ano;
+        String stDia = String.format("%02d", this.dia);
+        String stMes = String.format("%02d", this.mes);
+        String stAno = String.format("%04d", this.ano);
+        return stDia + '/' + stMes + '/' + stAno;
     }
     
     //metodos
@@ -73,10 +75,6 @@ public class Data {
         return this.dia > 0 && this.dia <= 30;
     }
     
-    private boolean dataValida(){
-        return anoValido() && mesValido() && diaValido();
-    }
-    
     public void avancarDia(){
         this.dia++;
         if(!diaValido()){
@@ -87,5 +85,21 @@ public class Data {
                 this.ano++;
             }
         }
+    }
+    
+    public boolean eMaisAntiga(Data d){
+        if(this.ano < d.ano)
+            return true;
+        if(this.ano > d.ano)
+            return false;
+        if(this.mes < d.mes)
+            return true;
+        if(this.mes > d.mes)
+            return false;
+        if(this.dia < d.dia)
+            return true;
+        if(this.dia > d.dia)
+            return false;
+        return false;
     }
 }
