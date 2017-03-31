@@ -1,16 +1,14 @@
-package parte2joy;
-
 import java.util.ArrayList;
 
 public class Joystick {
     //atributos
     private String modelo;
     private ArrayList<String> acoes;
-    private ArrayList<Integer> botoes;
+    private ArrayList<Botao> botoes;
     
     //construtores
     public Joystick(String modelo){
-        setModelo(modelo);
+        this.modelo = modelo;
         acoes = new ArrayList<>();
         botoes = new ArrayList<>();
     }
@@ -29,7 +27,7 @@ public class Joystick {
         return acoes;
     }
 
-    public ArrayList<Integer> getBotoes() {
+    public ArrayList<Botao> getBotoes() {
         return botoes;
     }
     
@@ -42,35 +40,54 @@ public class Joystick {
         this.acoes = acoes;
     }
 
-    public void setBotoes(ArrayList<Integer> botoes) {
+    public void setBotoes(ArrayList<Botao> botoes) {
         this.botoes = botoes;
     }
     
     //métodos
     public void cadastrarAcao(String acao){
-        if(this.acoes.size() <= 10 && !this.acoes.contains(acao))
+        if(this.acoes.size() <= 100 && !this.acoes.contains(acao))
             this.acoes.add(acao);
     }
     
-    public void adicionarBotao(int n){
-        if(this.botoes.size() <= 10 && !this.botoes.contains(n))
-            this.botoes.add(n);
+    public void adicionarBotao(Botao b){
+        if(this.botoes.size() <= 50 && !this.botoes.contains(b))
+            this.botoes.add(b);
     }
     
     public String realizarAcao(String acao){
         if(this.acoes.contains(acao))
             return acao;
-        return null;
+        return "";
     }
     
-    public String apertarBotao(int n){
-        if(this.botoes.contains(n)){
-            int index = this.botoes.indexOf(n);
-            return this.acoes.get(index);
+    public void relacionarBotaoAcao(Botao b, String acao){
+        if(!this.botoes.contains(b) || !this.acoes.contains(acao)){
+            this.cadastrarAcao(acao);
+            this.adicionarBotao(b);
         }
-        return null;
+        if(this.botoes.contains(b) && this.acoes.contains(acao))
+            b.getAcoes().add(acao);
+                
     }
     
+    public String apertarBotao(Botao b){
+        if(this.botoes.contains(b))
+            return b.getAcoes().get(0);
+        return "";
+    }
     
+    public String apertarBotao(Botao b, String acao){
+        if(this.botoes.contains(b) && this.acoes.contains(acao)){
+            if(b.getAcoes().contains(acao))
+                return acao;
+        }
+        return "";
+    }
     
+    public String apertarBotao(Botao b, int idAcao){
+        if(idAcao <= b.getAcoes().size() && this.botoes.contains(b))
+            return b.getAcoes().get(idAcao);
+        return "";
+    }
 }
