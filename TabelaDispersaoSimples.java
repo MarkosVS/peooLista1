@@ -1,5 +1,3 @@
-package parte2tabela;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,6 +18,10 @@ public class TabelaDispersaoSimples {
         return tabela;
     }
     
+    //setter
+    public void setTabela(int[] n){
+        tabela = n;
+    }
     //metodos
     public void adicionar(int n) throws IOException{
         char resp;
@@ -61,7 +63,5 @@ public class TabelaDispersaoSimples {
         int index = buscarIndice(n);
         if(index >= 0)
             this.tabela[index] = -1;
-    }
-    
-    
+    }   
 }
