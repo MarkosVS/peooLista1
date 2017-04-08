@@ -1,11 +1,13 @@
-package parte2calc;
-
 public class Calculadora {
     private int resultado;
     
     //construtor
     public Calculadora(){
         this.resultado = 0;
+    }
+    
+    public Calculadora(int resultado){
+        this.resultado = resultado;
     }
     
     //getter
@@ -18,6 +20,12 @@ public class Calculadora {
         this.resultado = resultado;
     }
     
+    //override metodos
+    @Override
+    public String toString(){
+        return "Resultado = " + this.resultado;
+    } 
+
     //métodos
     public int somar(int a){
         this.resultado += a;
@@ -35,10 +43,8 @@ public class Calculadora {
     }
     
     public int dividir(int a){
-        if(a != 0){
+        if(a != 0)
             this.resultado /= a;
-            System.out.println("Impossível dividir por 0. Dividindo por 1...");
-        }
         return this.resultado;
     }
     
