@@ -63,5 +63,11 @@ public class TabelaDispersaoSimples {
         int index = buscarIndice(n);
         if(index >= 0)
             this.tabela[index] = -1;
-    }   
+    }
+
+    public int get(int index){
+        if(index < 0 || index > this.tabela.length)
+            return -1;
+        return this.tabela[index];
+    }
 }
