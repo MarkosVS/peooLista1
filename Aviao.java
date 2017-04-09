@@ -1,5 +1,3 @@
-package parte2aviao;
-
 public class Aviao {
     //atributos
     private int prefixo;
@@ -58,5 +56,9 @@ public class Aviao {
         this.modelo = modelo;
     }
     
-    
+    //override metodos
+    @Override
+    public String toString(){
+        return this.modelo;
+    }
 }
