@@ -68,9 +68,8 @@ public class Data {
             return this.dia > 0 && this.dia <= 28;
         int[] meses31 = {1, 3, 5, 7, 8, 10, 12};
         for(int i : meses31){
-            if(this.mes == i){
+            if(this.mes == i)
                 return this.dia > 0 && this.dia <= 31;
-            }
         }
         return this.dia > 0 && this.dia <= 30;
     }
@@ -101,5 +100,15 @@ public class Data {
         if(this.dia > d.dia)
             return false;
         return false;
+    }
+
+    public String formatData(String formato){
+        if(formato.equals("eua")){
+            String stDia = String.format("%02d", this.dia);
+            String stMes = String.format("%02d", this.mes);
+            String stAno = String.format("%04d", this.ano);
+            return stMes + '/' + stDia + '/' + stAno;
+        }
+        return toString();
     }
 }
