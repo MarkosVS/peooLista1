@@ -1,5 +1,3 @@
-package parte2aviao;
-
 import java.util.ArrayList;
 
 public class Aeroporto {
@@ -62,21 +60,16 @@ public class Aeroporto {
     public void pousarAviao(Aviao a){
         this.avioes.add(a);
     }
-    
-    /*
-    Método com escrita tradicional:
-    public boolean aviaoEstaNoPatio(int pref){
-        for(Aviao a : avioes){
-            if(a.getPrefixo() == pref)
-                return true;
-        }
-        return false;
-    }
-    Método com escrita atualizada:
-    */
-    
+        
     public boolean aviaoEstaNoPatio(int pref){
         return this.avioes.stream().anyMatch((Aviao a) -> (a.getPrefixo() == pref));
     }
     
+    public Aviao buscarAviao(int pref){
+        for(Aviao a : avioes){
+            if(a.getPrefixo() == pref)
+                return a;
+        }
+        return null;
+    }
 }
