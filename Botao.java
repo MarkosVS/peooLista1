@@ -1,5 +1,3 @@
-package parte2joy;
-
 import java.util.ArrayList;
 
 public class Botao {
@@ -30,6 +28,5 @@ public class Botao {
     public void setId(String id) {
         this.id = id;
     }
-    
-    
+ 
 }
