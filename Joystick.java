@@ -9,26 +9,26 @@ public class Joystick {
     //construtores
     public Joystick(String modelo){
         this.modelo = modelo;
-        acoes = new ArrayList<>();
-        botoes = new ArrayList<>();
+        this.acoes = new ArrayList<>();
+        this.botoes = new ArrayList<>();
     }
     
     public Joystick(){
-        acoes = new ArrayList<>();
-        botoes = new ArrayList<>();
+        this.acoes = new ArrayList<>();
+        this.botoes = new ArrayList<>();
     }
     
     //getters
     public String getModelo() {
-        return modelo;
+        return this.modelo;
     }
 
     public ArrayList<String> getAcoes() {
-        return acoes;
+        return this.acoes;
     }
 
     public ArrayList<Botao> getBotoes() {
-        return botoes;
+        return this.botoes;
     }
     
     //setters
@@ -59,6 +59,13 @@ public class Joystick {
         if(this.acoes.contains(acao))
             return acao;
         return "";
+    }
+
+    public void imprimeAcao(String acao){
+        if(this.acoes.contains(acao))
+            System.out.println(acao);
+        else
+            System.out.println("Ação não cadastrada");
     }
     
     public void relacionarBotaoAcao(Botao b, String acao){
