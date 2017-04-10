@@ -1,5 +1,3 @@
-package parte2compra;
-
 import java.util.ArrayList;
 
 public class Compra {
@@ -51,9 +49,21 @@ public class Compra {
     //metodos
     public void inserirItem(ItemCompra i){
         if(this.compras.size() <= 5){
-            this.compras.add(i);
+            int index = this.buscarItem(i.getCodigo());
+            if(index < 0)
+                this.compras.add(i);
+            else
+                this.compras.get(index).incrementarQtd(i.getQuantidade());
             this.totalCompra += i.calcularTotal();
         }
+    }
+
+    public int buscarItem(int codigo){
+        for(int i = 0; i < this.compras.size(); i++){
+            if(this.compras.get(i).getCodigo() == codigo)
+                return i;
+        }
+        return -1;
     }
     
     public double calcularTotalCompra(){
@@ -97,6 +107,5 @@ public class Compra {
     
     public void imprimirNota(String pagamento, int parcelas){
         System.out.println(notaFiscal(pagamento, parcelas));
-    }
-    
+    }   
 }
