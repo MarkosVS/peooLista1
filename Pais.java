@@ -1,5 +1,3 @@
-package parte2pais;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -72,7 +70,7 @@ public class Pais {
             }
         }
         msmContinente.stream().forEach((Pais p) -> {
-            System.out.println(p);
+            System.out.println(p + "\n");
         });
     }
 }
