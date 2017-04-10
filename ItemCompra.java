@@ -1,5 +1,3 @@
-package parte2compra;
-
 public class ItemCompra {
     //atributos
     private int codigo;
@@ -53,6 +51,8 @@ public class ItemCompra {
     public double calcularTotal(){
         return this.preco * this.quantidade;
     }
-    
-    
+
+    public void incrementarQtd(int q){
+        this.quantidade += q;
+    }   
 }
